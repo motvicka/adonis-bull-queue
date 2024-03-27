@@ -77,6 +77,10 @@ export class BullManager {
 			}
 		);
 
+		worker.on('error', async (job, error) => {
+			this.logger.error("error in job");
+		});
+
 		worker.on('failed', async (job, error) => {
 			this.logger.error(error.message, []);
 
